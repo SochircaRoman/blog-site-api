@@ -1,11 +1,17 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is the back-end part of a blog site written in Express.js a framework of Node.js",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sochirca Roman",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "brcypt": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  }
 }
