@@ -4,7 +4,7 @@
   "description": "This is the back-end part of a blog site written in Express.js a framework of Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/app.js"
   },
   "author": "Sochirca Roman",
   "license": "ISC",
