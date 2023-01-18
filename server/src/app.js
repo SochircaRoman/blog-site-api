@@ -1,8 +1,12 @@
-require("dotenv").config()
+require("dotenv").config();
 
-const express = require("express")
+const express = require("express");
+const router = require("./api/routes/index");
 
-const app = express()
+const app = express();
+
+app.use(express.json());
+app.use('/', router);
 
 const startServer = async () => {
   try {
@@ -14,6 +18,6 @@ const startServer = async () => {
   } catch (error) {
       console.log(error)
   }
-}
+};
 
-startServer()
+startServer();
