@@ -18,22 +18,18 @@ class AuthController{
                   return response.status(404).json({ error: "Email is not present" })
               }
           }
-          console.log("here1")
 
           // Register the new user
           const registeredUser = await AuthService.register(username, password, email)
           if (!registeredUser) {
               return response.status(400).json({ error: "User not created" })
           }
-          console.log("here2")
-
-          // Create refreshToken cookie for user
-          response.cookie('refreshToken', registeredUser.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
 
           // Send the succes response
           return response.status(200).json({ message: "User successfully created", user: registeredUser });
           
       } catch(error){
+          // Send error response
           return response.status(400).json({ error: error.message });
       }
   }
