@@ -5,10 +5,12 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+    maxlength: 150,
   },
   description: {
     type: String,
     required: true,
+    maxlength: 5000,
   },
   author: {
     type: String,
