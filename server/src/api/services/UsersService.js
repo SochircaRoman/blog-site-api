@@ -49,12 +49,12 @@ class UsersService {
         return null;
     }
 
-    async updateAdminRoot(id, admin_root) {
-        return await UsersRepository.updateAdminRoot(id, admin_root);
+    async updateUsername(newUsername, id) {
+        return await UsersRepository.updateAdminRoot(newUsername, id);
     }
 
-    async updateUser(id, user) {
-        return await UsersRepository.updateUser(id, user);
+    async updateUserPassword(oldPassword, newPassword, id) {
+        return await UsersRepository.updateUser(oldPassword, newPassword, id);
     }
 
     async delete(id) {
