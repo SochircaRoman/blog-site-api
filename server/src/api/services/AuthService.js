@@ -1,4 +1,4 @@
-//const AuthRepository = require('../../database/repositories/AuthRepository');
+const AuthRepository = require('../../database/repositories/AuthRepository');
 const UsersService = require('../services/UsersService');
 //const MailService = require('../services/MailService');
 //const TokenService = require('../services/TokenService');
