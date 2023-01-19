@@ -56,7 +56,38 @@ class AuthService {
         return {registeredUser}
     }
 
-    
+    async login(username, password) {
+
+      // Check if username exist
+      const existingUser = await UsersService.getUserByUsername(username)
+      if (!existingUser) {
+          throw new Error(`User with username '${username}' not be found`)
+      }
+
+      // Check if password is correct
+      const correctPassword = await AuthRepository.comparePasswords(password, existingUser.password)
+      if (!correctPassword) {
+          throw new Error("Password is not correct")
+      }
+
+      // Create a access token for logged user
+      /*
+      const tokens = await TokenService.generateTokens({username})
+      const accessToken = tokens.accessToken
+      if (!accessToken) {
+          throw new Error("Access Token generate error")
+      }
+
+      // Verify activation link
+      const isActivated = existingUser.isActivated
+      if (!isActivated) {
+          throw new Error("Please activate your account")
+      }
+      */
+
+      // If all ok return accessToken and the existingUser
+      return {existingUser}
+    }
 
 }
 
