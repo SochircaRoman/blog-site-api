@@ -1,9 +1,9 @@
-const Router = require("express");
+const Router = require("express").Router;
 const router = new Router();
 
 const controller = require('../controllers/UsersController')
 
-router.patch('/update_username/:id', controller.updateUsername);
-router.patch('/update_password/:id', controller.updateUserPassword);
+router.patch('/updateUsername/:id', controller.updateUsername);
+router.patch('/updatePassword/:id', controller.updateUserPassword);
 
 module.exports = router

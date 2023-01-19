@@ -6,7 +6,7 @@ class UsersRepository {
   }
 
   async getUserById(id) {
-      return await User.findByPk(id)
+      return await User.findById(id)
   }
 
   async getUserByEmail(email) {
@@ -51,7 +51,7 @@ class UsersRepository {
   }
 
   async updateUsername(newUsername, id) {
-      const existingUser = await User.findByPk(id)
+      const existingUser = await User.findById(id)
       if (existingUser) {
         return await existingUser.update({ username: newUsername });
       }

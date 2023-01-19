@@ -7,7 +7,7 @@ const router = new Router();
 //router.use(fileUpload());
 //router.use(cookieParser());
 
-const modules = ['auth']
+const modules = ['auth', 'users']
 
 modules.forEach(module => {
     router.use(`/api/${module}`, require(`./${module}`))
