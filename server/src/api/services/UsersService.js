@@ -50,11 +50,11 @@ class UsersService {
     }
 
     async updateUsername(newUsername, id) {
-        return await UsersRepository.updateAdminRoot(newUsername, id);
+        return await UsersRepository.updateUsername(newUsername, id);
     }
 
     async updateUserPassword(oldPassword, newPassword, id) {
-        return await UsersRepository.updateUser(oldPassword, newPassword, id);
+        return await UsersRepository.updateUserPassword(oldPassword, newPassword, id);
     }
 
     async delete(id) {
