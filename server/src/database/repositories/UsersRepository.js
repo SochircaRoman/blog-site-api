@@ -18,7 +18,7 @@ class UsersRepository {
   }
 
   async getUserByUsername(username) {
-      const existingUser = await User.findOne({ where: { username: username } })
+      const existingUser = await User.findOne({ username: username })
       if (existingUser) {
           return existingUser
       }
@@ -59,7 +59,7 @@ class UsersRepository {
   }
 
   async updateUserPassword(newHashPassword, id) {
-    const existingUser = await User.findByPk(id)
+    const existingUser = await User.findById(id)
       if (existingUser) {
         return await existingUser.update({ password: newHashPassword });
       }

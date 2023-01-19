@@ -66,7 +66,7 @@ class UsersService {
 
         // Generate new hashPassword
         const newHashPassword = await bcrypt.hash(newPassword, 10)
-        if (!hashPassword) {
+        if (!newHashPassword) {
             throw new Error("Hash password generate error")
         }
 
