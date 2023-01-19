@@ -17,7 +17,7 @@ class UsersController{
             }
 
             // Update user information
-            return response.status(200).json(await UsersService.updateUsername(newUsername));
+            return response.status(200).json(await UsersService.updateUsername(newUsername, request.params.id));
         } catch(error){
             return response.status(500).json(JSON.stringify(error))
         }
@@ -38,7 +38,7 @@ class UsersController{
             }
 
             // Update user information
-            return response.status(200).json(await UsersService.updateUserPassword(oldPassword, newPassword));
+            return response.status(200).json(await UsersService.updateUserPassword(oldPassword, newPassword, request.params.id));
         } catch(error){
             return response.status(500).json(JSON.stringify(error))
         }
