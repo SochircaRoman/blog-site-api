@@ -55,6 +55,14 @@ class UsersRepository {
           where: { id: id }
       })
   }
+
+  async saveUser(user) {
+      const savedUser = await user.save()
+      if (savedUser) {
+          return savedUser
+      }
+      return null;
+  }
 }
 
 module.exports = new UsersRepository()
