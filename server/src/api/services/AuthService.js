@@ -56,6 +56,8 @@ class AuthService {
         return {registeredUser}
     }
 
+    
+
 }
 
 module.exports = new AuthService()
