@@ -38,7 +38,7 @@ class UsersController{
             }
 
             // Update user information
-            return response.status(200).json(await UsersService.updateUserPassword(oldPassword, newPassword, request.params.id));
+            return response.status(200).json(await UsersService.updateUserPassword(oldPassword, newPassword, user));
         } catch(error){
             return response.status(500).json(JSON.stringify(error))
         }

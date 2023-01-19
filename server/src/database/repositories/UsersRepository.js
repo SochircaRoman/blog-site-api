@@ -50,6 +50,22 @@ class UsersRepository {
       return null;
   }
 
+  async updateUsername(newUsername, id) {
+      const existingUser = await User.findByPk(id)
+      if (existingUser) {
+        return await existingUser.update({ username: newUsername });
+      }
+      return null;
+  }
+
+  async updateUserPassword(newHashPassword, id) {
+    const existingUser = await User.findByPk(id)
+      if (existingUser) {
+        return await existingUser.update({ password: newHashPassword });
+      }
+      return null;
+  }
+
   async deleteUser(id) {
       return await User.destroy({
           where: { id: id }

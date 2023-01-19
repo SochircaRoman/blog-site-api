@@ -1,4 +1,7 @@
 const UsersRepository = require('../../database/repositories/UsersRepository')
+const AuthRepository = require('../../database/repositories/AuthRepository');
+
+const bcrypt = require('bcryptjs');
 
 class UsersService {
     async getAllUsers(fields = undefined) {
@@ -53,8 +56,21 @@ class UsersService {
         return await UsersRepository.updateUsername(newUsername, id);
     }
 
-    async updateUserPassword(oldPassword, newPassword, id) {
-        return await UsersRepository.updateUserPassword(oldPassword, newPassword, id);
+    async updateUserPassword(oldPassword, newPassword, user) {
+
+        // Check if password is correct
+        const correctPassword = await AuthRepository.comparePasswords(oldPassword, user.password)
+        if (!correctPassword) {
+            throw new Error("Password is not correct")
+        }
+
+        // Generate new hashPassword
+        const newHashPassword = await bcrypt.hash(newPassword, 10)
+        if (!hashPassword) {
+            throw new Error("Hash password generate error")
+        }
+
+        return await UsersRepository.updateUserPassword(newHashPassword, user.id);
     }
 
     async delete(id) {
