@@ -49,6 +49,12 @@ class UsersRepository {
       }
       return null;
   }
+
+  async deleteUser(id) {
+      return await User.destroy({
+          where: { id: id }
+      })
+  }
 }
 
 module.exports = new UsersRepository()
