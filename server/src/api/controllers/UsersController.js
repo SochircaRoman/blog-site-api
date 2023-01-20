@@ -44,6 +44,25 @@ class UsersController{
         }
     }
 
+    async deleteUser(request, response){
+        try{
+            // Verify if id is valid and user exist
+            const user = await UsersService.getUserById(request.params.id)
+            if(!user){
+               return response.status(404).json({ error: "User with that id no exist" })
+            }
+
+            // Delete user account and posts
+            const deletedUser = await UsersService.deleteUser(request.params.id)
+            if (deletedUser) {
+                return response.status(200).json({ message: "User has been deleted" })
+            }
+            return response.status(404).json({ error: "User not been deleted" })
+        } catch(error){
+            return response.status(500).json(JSON.stringify(error))
+        }
+    }
+
 }
 
 module.exports = new UsersController()
