@@ -31,7 +31,7 @@ class UsersRepository {
   }
 
   async getUsers() {
-      return await User.findAll()
+      return await User.find()
   }
 
   async createUser(username, password, email, activationLink) {
