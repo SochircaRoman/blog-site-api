@@ -7,5 +7,6 @@ router.patch('/updateUsername/:id', controller.updateUsername);
 router.patch('/updatePassword/:id', controller.updateUserPassword);
 router.delete('/deleteUser/:id', controller.deleteUser);
 router.get('/:id', controller.getUser);
+router.get('/', controller.getUsers);
 
 module.exports = router
