@@ -60,16 +60,18 @@ class UsersRepository {
 
   async updateUserPassword(newHashPassword, id) {
     const existingUser = await User.findById(id)
-      if (existingUser) {
-        return await existingUser.update({ password: newHashPassword });
-      }
-      return null;
+    if (existingUser) {
+    return await existingUser.update({ password: newHashPassword });
+    }
+    return null;
   }
 
   async deleteUser(id) {
-      return await User.destroy({
-          where: { id: id }
-      })
+    const deletedUser = await User.findByIdAndDelete({ id: id })
+    if (deletedUser) {
+        return deletedUser;
+    }
+    return null;
   }
 
   async saveUser(user) {
