@@ -1,5 +1,6 @@
 const UsersRepository = require('../../database/repositories/UsersRepository')
 const AuthRepository = require('../../database/repositories/AuthRepository');
+const PostsRepository = require('../../database/repositories/PostsRepository')
 
 const bcrypt = require('bcryptjs');
 
@@ -73,8 +74,20 @@ class UsersService {
         return await UsersRepository.updateUserPassword(newHashPassword, user.id);
     }
 
-    async delete(id) {
-        return await UsersRepository.delete(id)
+    async deleteUser(id) {
+        // Delete all user posts
+        const deletedPosts = await PostsRepository.deleteAllPosts(id)
+        if (!deletedPosts) {
+            throw new Error("Delete posts error")
+        }
+
+        // Delete user account
+        const deletedUser = await UsersRepository.deleteUser(id)
+        if (!deletedUser) {
+            throw new Error("Delete user error")
+        }
+
+        return (deletedUser, deletedPosts)
     }
 
     async saveUser(user) {
