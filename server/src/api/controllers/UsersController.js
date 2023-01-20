@@ -11,7 +11,7 @@ class UsersController{
             }
 
             // Return user information
-            return response.status(200).json(await UsersService.getUser(request.params.id))
+            return response.status(200).json(user)
         } catch(error){
             return response.status(500).json(JSON.stringify(error))
         }
