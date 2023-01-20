@@ -10,7 +10,7 @@ class UsersRepository {
   }
 
   async getUserByEmail(email) {
-      const existingUser = await User.findOne({ where: { email: email } })
+      const existingUser = await User.findOne({ email: email })
       if (existingUser) {
           return existingUser
       }
