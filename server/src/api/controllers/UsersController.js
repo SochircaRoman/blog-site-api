@@ -2,6 +2,21 @@ const UsersService = require('../services/UsersService');
 
 class UsersController{
 
+    async getUser(request, response){
+        try{
+            // Verify if id is valid and user exist
+            const user = await UsersService.getUserById(request.params.id)
+            if(!user){
+                return response.status(404).json({ error: "User with that id no exist" })
+            }
+
+            // Return user information
+            return response.status(200).json(await UsersService.getUser(request.params.id))
+        } catch(error){
+            return response.status(500).json(JSON.stringify(error))
+        }
+    }
+
     async updateUsername(request, response){
         try{
             // Get and verify if request is not empty
