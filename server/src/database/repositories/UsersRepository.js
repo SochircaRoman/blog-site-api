@@ -67,7 +67,7 @@ class UsersRepository {
   }
 
   async deleteUser(id) {
-    const deletedUser = await User.findByIdAndDelete({ id: id })
+    const deletedUser = await User.findByIdAndDelete(id)
     if (deletedUser) {
         return deletedUser;
     }
