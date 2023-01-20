@@ -3,7 +3,7 @@ const Post = require('../models/Post')
 class PostsRepository {
 
     async deleteAllPosts(id) {
-        const deletedPosts = await Post.deleteMany({ id: id })
+        const deletedPosts = await Post.deleteMany({ postedBy: id })
         if (deletedPosts) {
             return deletedPosts;
         }
