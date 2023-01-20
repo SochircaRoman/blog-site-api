@@ -5,13 +5,6 @@ const PostsRepository = require('../../database/repositories/PostsRepository')
 const bcrypt = require('bcryptjs');
 
 class UsersService {
-    async getAllUsers(fields = undefined) {
-        const allUsers = await UsersRepository.getAllUsers(fields)
-        if (allUsers) {
-            return allUsers;
-        }
-        return null;
-    }
 
     async getUserById(id) {
         const existingUser = await UsersRepository.getUserById(id)
@@ -41,6 +34,14 @@ class UsersService {
         const existingUser = await UsersRepository.getUserByActivationLink(activationLink)
         if (existingUser) {
             return existingUser;
+        }
+        return null;
+    }
+
+    async getUsers() {
+        const allUsers = await UsersRepository.getUsers()
+        if (allUsers) {
+            return allUsers;
         }
         return null;
     }

@@ -1,9 +1,6 @@
 const User = require('../models/User')
 
 class UsersRepository {
-  async getAllUsers(fields = undefined) {
-      return await User.findAll({attributes: fields})
-  }
 
   async getUserById(id) {
       return await User.findById(id)
@@ -31,6 +28,10 @@ class UsersRepository {
           return existingUser
       }
       return null;
+  }
+
+  async getUsers() {
+      return await User.findAll()
   }
 
   async createUser(username, password, email, activationLink) {
