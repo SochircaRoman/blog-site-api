@@ -17,6 +17,21 @@ class UsersController{
         }
     }
 
+    async getUsers(request, response){
+        try{
+            // Get all users
+            const allUsers = await UsersService.getUsers()
+            if(!allUsers){
+                return response.status(404).json({ error: "Users no exist" })
+            }
+
+            // Return all existing users
+            return response.status(200).json(allUsers)
+        } catch(error){
+            return response.status(500).json(JSON.stringify(error))
+        }
+    }
+
     async updateUsername(request, response){
         try{
             // Get and verify if request is not empty
