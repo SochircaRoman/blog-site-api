@@ -9,6 +9,14 @@ class PostsRepository {
         }
         return null;
     }
+
+    async createPost(post) {
+        const createdPost = await Post.create(post)
+        if (createdPost) {
+            return createdPost;
+        }
+        return null;
+    }
 }
 
 module.exports = new PostsRepository()
