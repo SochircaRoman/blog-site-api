@@ -25,6 +25,14 @@ class PostsRepository {
         }
         return false;
     }
+
+    async deletePost(id) {
+        const deletedPost = await Post.findByIdAndDelete(id)
+        if (deletedPost) {
+            return {};
+        }
+        return null;
+    }
 }
 
 module.exports = new PostsRepository()

@@ -17,6 +17,14 @@ class PostsService {
         }
         return null;
     }
+
+    async deletePost(id) {
+        const deletedPost = await PostsRepository.deletePost(id)
+        if (deletedPost) {
+            return deletedPost;
+        }
+        return null;
+    }
 }
 
 module.exports = new PostsService()

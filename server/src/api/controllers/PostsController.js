@@ -37,6 +37,27 @@ class PostsController{
             return response.status(400).json(JSON.stringify(error))
         }
     }
+
+    async deletePost(request, response){
+        try{
+            // Check if post exist
+            //const existingPost = await PostsService.getPostById(request.params.id)
+            //if (!existingPost) {
+              //  throw new Error(`Post with id '${username}' no exist`)
+            //}
+
+            // Delete post
+            const deletedPost = await PostsService.deletePost(request.params.id)
+            if (!deletedPost) {
+                return response.status(404).json({ error: "Post has not been deleted" })
+            }
+
+            // If all ok return succes message
+            return response.status(200).json({ message: "Post has been deleted" });
+        } catch(error){
+            return response.status(400).json(JSON.stringify(error))
+        }
+    }
 }
 
 module.exports = new PostsController()
