@@ -59,7 +59,7 @@ class PostsController{
             // Check if post exist
             const existingPost = await PostsService.getPost(request.params.id)
             if (!existingPost) {
-                throw new Error(`Post with id '${username}' no exist`)
+                return response.status(404).json({ error: `Post with id '${request.params.id}' no exist` })
             }
 
             // Delete post
