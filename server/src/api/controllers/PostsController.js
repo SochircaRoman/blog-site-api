@@ -5,7 +5,7 @@ class PostsController{
     async createPost(request, response){
         try{
             // Create post
-            const createdPost = await PostsService.create(request.body)
+            const createdPost = await PostsService.createPost(request.body)
             if (!createdPost) {
                 return response.status(404).json({ error: "Post has not created" })
             }
