@@ -57,10 +57,10 @@ class PostsController{
     async deletePost(request, response){
         try{
             // Check if post exist
-            //const existingPost = await PostsService.getPostById(request.params.id)
-            //if (!existingPost) {
-              //  throw new Error(`Post with id '${username}' no exist`)
-            //}
+            const existingPost = await PostsService.getPost(request.params.id)
+            if (!existingPost) {
+                throw new Error(`Post with id '${username}' no exist`)
+            }
 
             // Delete post
             const deletedPost = await PostsService.deletePost(request.params.id)
