@@ -2,6 +2,22 @@ const PostsService = require('../services/PostsService')
 
 class PostsController{
 
+    async getPost(request, response){
+        try{
+            // Verify if post exist
+            const post = await PostsService.getPost(request.params.id)
+            if(!post){
+                return response.status(404).json({ error: "Post with that id no exist" })
+            }
+
+            // Return post information
+            return response.status(200).json(post)
+        } catch(error){
+            console.log(error);
+            return response.status(500).json(JSON.stringify(error))
+        }
+    }
+
     async createPost(request, response){
         try{
             // Create post
