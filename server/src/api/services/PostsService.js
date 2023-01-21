@@ -3,7 +3,11 @@ const PostsRepository = require('../../database/repositories/PostsRepository')
 class PostsService {
 
     async createPost(post) {
-        return await PostsRepository.create(post)
+        const createdPost = await PostsRepository.create(post)
+        if (createdPost) {
+            return createdPost;
+        }
+        return null;
     }
 }
 
