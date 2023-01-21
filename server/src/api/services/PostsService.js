@@ -9,6 +9,14 @@ class PostsService {
         }
         return null;
     }
+
+    async updatePost(id, post) {
+        const updatedPost = await PostsRepository.updatePost(id, post)
+        if (updatedPost) {
+            return updatedPost;
+        }
+        return null;
+    }
 }
 
 module.exports = new PostsService()

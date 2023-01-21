@@ -17,6 +17,26 @@ class PostsController{
             return response.status(500).json(JSON.stringify(error.message))
         }
     }
+
+    async updatePost(request, response){
+        try{
+            // Check if body is not empty
+            if (!request.body) {
+                return response.status(404).json({ error: "Body is empty" })
+            }
+
+            // Update the post
+            const updatedPost = await PostsService.updatePost(request.params.id, request.body)
+            if (!updatedPost) {
+                return response.status(404).json({ error: "Post with that id no exist" })
+            }
+
+            // Return updated post
+            return response.status(200).json({ message: "Post has been updated", post: updatedPost });
+        } catch(error){
+            return response.status(400).json(JSON.stringify(error))
+        }
+    }
 }
 
 module.exports = new PostsController()

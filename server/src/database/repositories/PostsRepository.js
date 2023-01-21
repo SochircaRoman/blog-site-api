@@ -17,6 +17,14 @@ class PostsRepository {
         }
         return null;
     }
+
+    async updatePost(id, post) {
+        const existingPost = await Post.findByIdAndUpdate(id, post)
+        if (existingPost) {
+            return existingPost;
+        }
+        return false;
+    }
 }
 
 module.exports = new PostsRepository()
