@@ -3,5 +3,6 @@ const router = new Router();
 
 const controller = require('../controllers/PostsController')
 
+router.post('/', controller.createPost);
 
 module.exports = router
