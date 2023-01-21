@@ -18,6 +18,22 @@ class PostsController{
         }
     }
 
+    async getAllPosts(request, response){
+        try{
+            // Verify if post exist
+            const posts = await PostsService.getAllPosts()
+            if(!posts){
+                return response.status(404).json({ error: "No posts found" })
+            }
+
+            // Return posts information
+            return response.status(200).json(posts)
+        } catch(error){
+            console.log(error);
+            return response.status(500).json(JSON.stringify(error))
+        }
+    }
+
     async createPost(request, response){
         try{
             // Create post

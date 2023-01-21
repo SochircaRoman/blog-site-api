@@ -6,6 +6,10 @@ class PostsRepository {
         return await Post.findById(id)
     }
 
+    async getAllPosts() {
+        return await Post.find()
+    }
+
     async deleteAllPosts(id) {
         const deletedPosts = await Post.deleteMany({ postedBy: id })
         if (deletedPosts) {
