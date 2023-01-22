@@ -2,21 +2,21 @@ const PostsRepository = require('../../database/repositories/PostsRepository')
 
 class PostsService {
 
-  async getPost(id) {
-      const post = await PostsRepository.getPost(id)
-      if (post) {
-          return post;
-      }
-      return null;
-  }
+    async getPost(id) {
+        const post = await PostsRepository.getPost(id)
+        if (post) {
+            return post;
+        }
+        return null;
+    }
 
-  async getAllPosts() {
-      const posts = await PostsRepository.getAllPosts()
-      if (posts) {
-          return posts;
-      }
-      return null;
-  }
+    async getAllPosts() {
+        const posts = await PostsRepository.getAllPosts()
+        if (posts) {
+            return posts;
+        }
+        return null;
+    }
 
     async createPost(post) {
         const createdPost = await PostsRepository.createPost(post)

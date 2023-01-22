@@ -2,6 +2,13 @@ const CategoriesRepository = require('../../database/repositories/CategoriesRepo
 
 class CategoriesService {
 
+  async createCategory(category) {
+    const createdCategory = await PostsRepository.createdCategory(category)
+    if (createdCategory) {
+        return createdCategory;
+    }
+    return null;
+  }
   
 }
 
