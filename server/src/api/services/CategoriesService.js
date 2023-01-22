@@ -2,6 +2,14 @@ const CategoriesRepository = require('../../database/repositories/CategoriesRepo
 
 class CategoriesService {
 
+  async getCategory(id) {
+    const category = await CategoriesRepository.getCategory(id)
+    if (category) {
+        return category;
+    }
+    return null;
+  }
+
   async getAllCategories() {
     const categories = await CategoriesRepository.getAllCategories()
     if (categories) {

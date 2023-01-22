@@ -2,6 +2,22 @@ const CategoriesService = require('../services/CategoriesService')
 
 class CategoriesController{
 
+  async getCategory(request, response){
+    try{
+        // Verify if category exist
+        const category = await CategoriesService.getCategory(request.params.id)
+        if(!category){
+            return response.status(404).json({ error: "Category with that id no exist" })
+        }
+
+        // Return category
+        return response.status(200).json(category)
+    } catch(error){
+        // Send error response
+        return response.status(500).json(JSON.stringify(error.message))
+    }
+  }
+
   async getAllCategories(request, response){
     try{
         // Verify if category exist
