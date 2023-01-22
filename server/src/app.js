@@ -7,6 +7,7 @@ const app = express();
 
 app.use(express.json());
 app.use('/', router);
+app.use(express.static("src/api/static"));
 
 const startServer = async () => {
   try {

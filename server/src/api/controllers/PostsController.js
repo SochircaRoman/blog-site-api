@@ -1,4 +1,5 @@
-const PostsService = require('../services/PostsService')
+const PostsService = require('../services/PostsService');
+const FileService = require("../services/FileService");
 
 class PostsController{
 
@@ -36,6 +37,9 @@ class PostsController{
 
     async createPost(request, response){
         try{
+            // Create imagePath
+            const imageName = FileService.saveImage(request.files.image)
+
             // Create post
             const createdPost = await PostsService.createPost(request.body)
             if (!createdPost) {
