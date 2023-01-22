@@ -2,6 +2,10 @@ const Category = require('../models/Category')
 
 class CategoriesRepository {
 
+  async getAllCategories() {
+    return await Category.find()
+  }
+
   async createCategory(category) {
     const createdCategory = await Category.create(category)
     if (createdCategory) {
