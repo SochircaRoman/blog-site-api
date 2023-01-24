@@ -34,7 +34,7 @@ class AuthMiddleware {
 
     async userAuth(request, response, next){
         // Get the jwt token
-        let token
+        let token = request.headers["x-access-token"];
         if (request.headers.authorization && request.headers.authorization.startsWith("Bearer")) {
             token = request.headers.authorization.split(" ")[1];
         }
