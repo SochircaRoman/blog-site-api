@@ -32,6 +32,34 @@ class AuthMiddleware {
         }
     }
 
+    async userAuth(request, response, next){
+        // Get the jwt token
+        let token
+        if (request.headers.authorization && request.headers.authorization.startsWith("Bearer")) {
+            token = request.headers.authorization.split(" ")[1];
+        }
+
+        // Verify if token is present
+        if (!token) {
+            return response.status(401).json({ error: "You are not logged in! Please login in to continue" })
+        }
+
+        // Verify token
+        jwt.verify(token, process.env.JWT_ACCESS_SECRET, (error, decodedToken) =>{
+            if (error) {
+                return response.status(401).json({ error: "Not authorized" })
+            } else {
+                if (decodedToken.adminRoot) {
+                    return response.status(401).json({ error: "Not authorized" })
+                } else {
+                    next()
+                }
+            }
+        });
+
+        // If token is not available
+        return response.status(401).json({ error: "Not authorized, token not available" })
+    }
 }
 
 module.exports = new AuthMiddleware()
