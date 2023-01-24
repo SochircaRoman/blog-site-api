@@ -46,14 +46,8 @@ class AuthService {
             //throw new Error("Activation link send error")
         //}
 
-        // Generate acces token
-        const token = await TokenService.generateTokens({username})
-        if (!token) {
-            throw new Error("Access Token generate error")
-        }
-
-        // If all ok return token and the createdUser
-        return {registeredUser, ...token}
+        // If all ok return the createdUser
+        return {registeredUser}
     }
 
     async login(username, password) {
@@ -71,7 +65,10 @@ class AuthService {
       }
 
       // Create a access token for logged user
-      const token = await TokenService.generateTokens({username})
+      const token = await TokenService.generateTokens({
+        "username": username,
+        "adminRoot": existingUser.adminRoot
+      });
       if (!token) {
           throw new Error("Access Token generate error")
       }
