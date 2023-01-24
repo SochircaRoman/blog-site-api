@@ -1,5 +1,3 @@
-const TokenRepository = require('../../database/repositories/TokenRepository');
-
 const jwt = require('jsonwebtoken')
 
 class TokenService {

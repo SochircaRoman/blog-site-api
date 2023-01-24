@@ -46,7 +46,7 @@ class AuthService {
             //throw new Error("Activation link send error")
         //}
 
-        // Generate token
+        // Generate acces token
         const token = await TokenService.generateTokens({username})
         if (!token) {
             throw new Error("Access Token generate error")
