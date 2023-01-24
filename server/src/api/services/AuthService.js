@@ -47,13 +47,13 @@ class AuthService {
         //}
 
         // Generate tokens
-        //const tokens = await TokenService.generateTokens({username})
-        //if (!tokens) {
-            //throw new Error("Tokens generate error")
-        //}
+        const tokens = await TokenService.generateTokens({username})
+        if (!tokens) {
+            throw new Error("Tokens generate error")
+        }
 
         // If all ok return tokens and the createdUser
-        return {registeredUser}
+        return {registeredUser, ...tokens}
     }
 
     async login(username, password) {
