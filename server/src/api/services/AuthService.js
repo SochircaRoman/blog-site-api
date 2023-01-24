@@ -1,7 +1,7 @@
 const AuthRepository = require('../../database/repositories/AuthRepository');
 const UsersService = require('../services/UsersService');
 //const MailService = require('../services/MailService');
-//const TokenService = require('../services/TokenService');
+const TokenService = require('../services/TokenService');
 
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
@@ -46,14 +46,14 @@ class AuthService {
             //throw new Error("Activation link send error")
         //}
 
-        // Generate tokens
-        const tokens = await TokenService.generateTokens({username})
-        if (!tokens) {
-            throw new Error("Tokens generate error")
+        // Generate token
+        const token = await TokenService.generateTokens({username})
+        if (!token) {
+            throw new Error("Access Token generate error")
         }
 
-        // If all ok return tokens and the createdUser
-        return {registeredUser, ...tokens}
+        // If all ok return token and the createdUser
+        return {registeredUser, ...token}
     }
 
     async login(username, password) {
@@ -71,13 +71,12 @@ class AuthService {
       }
 
       // Create a access token for logged user
-      /*
-      const tokens = await TokenService.generateTokens({username})
-      const accessToken = tokens.accessToken
-      if (!accessToken) {
+      const token = await TokenService.generateTokens({username})
+      if (!token) {
           throw new Error("Access Token generate error")
       }
 
+      /*
       // Verify activation link
       const isActivated = existingUser.isActivated
       if (!isActivated) {
@@ -86,7 +85,7 @@ class AuthService {
       */
 
       // If all ok return accessToken and the existingUser
-      return {existingUser}
+      return {existingUser, ...token}
     }
 
 }
