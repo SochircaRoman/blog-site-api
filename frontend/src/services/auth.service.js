@@ -37,6 +37,10 @@ class AuthService {
     // If all ok return user data
     return candidate.data;
   }
+
+  async logout() {
+    localStorage.removeItem('user');
+  }
   
 }
 
