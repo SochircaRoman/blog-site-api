@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-const API_URL = 'http://localhost:3000/api/auth/';
+import GenericService from './generic.service';
 
 class AuthService {
   
