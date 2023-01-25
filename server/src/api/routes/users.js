@@ -3,7 +3,7 @@ const router = new Router();
 
 const controller = require('../controllers/UsersController');
 
-// adminAuth filter middleware
+// Authorization filter middleware
 const authorization  = require("../middleware/AuthMiddleware");
 
 // Only Admin acces
