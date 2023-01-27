@@ -1,22 +1,28 @@
 <template>
-  <div class="container">
+  <div class="wrapper">
     <Form @submit="handleLogin" :validation-schema="schema">
-      <div class="form-group">
-        <label for="username">Username</label>
-        <Field name="username" type="text" class="form-control" />
-        <ErrorMessage name="username" class="error-feedback" />
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <Field name="password" type="password" class="form-control" />
-        <ErrorMessage name="password" class="error-feedback" />
-      </div>
 
-      <div class="form-group">
-        <button class="btn btn-primary btn-block" :disabled="loading">
+      <div class="img_container">
+				<img src="/avatar.png" alt="Avatar" class="profile_img">
+			</div>
+
+      <div class="input_container">
+        <div>
+          <label for="username"><b>Username</b></label>
+          <Field name="username" type="text" placeholder="Enter Username" class="input_field" />
+          <ErrorMessage name="username" class="error-feedback" />
+        </div>
+
+        <div>
+          <label for="password"><b>Password</b></label>
+          <Field name="password" type="password" placeholder="Enter Password" class="input_field" />
+          <ErrorMessage name="username" class="error-feedback" />
+        </div>
+
+        <button class="submit_btn" :disabled="loading">
           <span
             v-show="loading"
-            class="spinner-border spinner-border-sm"
+            class=""
           ></span>
           <span>Login</span>
         </button>
@@ -27,6 +33,16 @@
           {{ message }}
         </div>
       </div>
+
+      <div class="other">
+				<div class="other_info">
+					<a href="#" class="other_info-link">Registration?</a>
+				</div>
+				<div class="other_info">
+					Forgot <a href="#" class="other_info-link">password?</a>
+				</div>
+	  	</div>
+
     </Form>
   </div>
 </template>
@@ -84,5 +100,62 @@ export default {
 </script>
 
 <style scoped>
+
+.wrapper {
+  max-width: 25%;
+  margin: 0 auto;
+  margin-top: 75px;
+}
+
+.img_container {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+.profile_img {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.input_container {
+  padding: 16px;
+}
+
+.submit_btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-size: 20px;
+}
+
+.submit_btn:hover {
+  opacity: 0.8;
+}
+
+.input_field {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.other {
+  min-height: 30px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  background-color:#f1f1f1;
+}
+
+.other_info-link {
+  text-decoration: none;
+  font-size: 15px;
+}
 
 </style>
