@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = 'http://localhost:3000/api/'
+const API_URL = 'http://localhost:3000/api'
 
 class GenericService {
   async request({ url, method, data = {}, headers = {} }) {
