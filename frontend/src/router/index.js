@@ -1,5 +1,5 @@
 import { createWebHistory, createRouter } from 'vue-router';
-//import LoginItem from '../components/LoginItem.vue'
+import LoginItem from '../components/LoginItem.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -8,6 +8,11 @@ const router = createRouter({
       path: '/',
       redirect: '/home'
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginItem
+    }
   ]
 })
 
