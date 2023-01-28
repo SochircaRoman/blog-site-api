@@ -102,13 +102,6 @@ export default {
 
 <style scoped>
 
-:root {
-  --error-color: #f23648;
-  --error-bg-color: #fddfe2;
-  --success-color: #21a67a;
-  --success-bg-color: #e0eee4;
-}
-
 .wrapper {
   max-width: 25%;
   margin: 0 auto;
@@ -158,7 +151,7 @@ export default {
 }
 
 .message__respones {
-  color: orangered;
+  color: #f23648;
 }
 
 .other {
