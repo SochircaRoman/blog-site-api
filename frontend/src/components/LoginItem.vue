@@ -7,13 +7,13 @@
 			</div>
 
       <div class="input_container">
-        <div>
+        <div class="input_group">
           <label for="username"><b>Username</b></label>
           <Field name="username" type="text" placeholder="Enter Username" class="input_field" />
           <ErrorMessage name="username" class="error-feedback" />
         </div>
 
-        <div>
+        <div class="input_group">
           <label for="password"><b>Password</b></label>
           <Field name="password" type="password" placeholder="Enter Password" class="input_field" />
           <ErrorMessage name="password" class="error-feedback" />
@@ -122,6 +122,10 @@ export default {
   padding: 16px;
 }
 
+.input_group {
+  margin-bottom: 15px;
+}
+
 .submit_btn {
   background-color: #04AA6D;
   color: white;
@@ -150,8 +154,14 @@ export default {
   color: #f23648;
 }
 
+.response {
+  margin: -10px;
+  margin-bottom: 20px;
+}
+
 .message__respones {
   color: #f23648;
+  text-align: center;
 }
 
 .other {
