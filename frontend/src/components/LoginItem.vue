@@ -9,13 +9,13 @@
       <div class="input_container">
         <div class="input_group">
           <label for="username"><b>Username</b></label>
-          <Field name="username" type="text" placeholder="Enter Username" class="input_field" />
+          <Field name="username" type="text" placeholder="Enter Username" class="input_field" :validateOnInput="true" />
           <ErrorMessage name="username" class="error-feedback" />
         </div>
 
         <div class="input_group">
           <label for="password"><b>Password</b></label>
-          <Field name="password" type="password" placeholder="Enter Password" class="input_field" />
+          <Field name="password" type="password" placeholder="Enter Password" class="input_field" :validateOnInput="true" />
           <ErrorMessage name="password" class="error-feedback" />
         </div>
 
@@ -58,19 +58,19 @@ export default {
     Field,
     ErrorMessage,
   },
-  data() {
-    const schema = yup.object().shape({
-      username: yup.string().min(4).max(30).required("Username is required!"),
-      password: yup.string().min(8).max(30).required("Password is required!"),
-    });
-
-    return {
-      loading: false,
-      message: "",
-      schema,
-    };
-  },
+  data: () => ({
+    loading: false,
+    message: "",
+    min: 6,
+    max: 30,
+  }),
   computed: {
+    schema() {
+      return yup.object({
+        username: yup.string().min(this.min).max(this.max).required("Username is required!").label('Username'),
+        password: yup.string().min(this.min).max(this.max).required("Password is required!").label('Password')
+      })
+    },
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
