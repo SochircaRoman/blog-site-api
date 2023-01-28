@@ -16,7 +16,7 @@
         <div>
           <label for="password"><b>Password</b></label>
           <Field name="password" type="password" placeholder="Enter Password" class="input_field" />
-          <ErrorMessage name="username" class="error-feedback" />
+          <ErrorMessage name="password" class="error-feedback" />
         </div>
 
         <button class="submit_btn" :disabled="loading">
@@ -28,8 +28,8 @@
         </button>
       </div>
 
-      <div class="form-group">
-        <div v-if="message" class="alert alert-danger" role="alert">
+      <div class="response">
+        <div v-if="message" class="message__respones" role="alert">
           {{ message }}
         </div>
       </div>
@@ -60,8 +60,8 @@ export default {
   },
   data() {
     const schema = yup.object().shape({
-      username: yup.string().required("Username is required!"),
-      password: yup.string().required("Password is required!"),
+      username: yup.string().min(4).max(30).required("Username is required!"),
+      password: yup.string().min(8).max(30).required("Password is required!"),
     });
 
     return {
@@ -90,6 +90,7 @@ export default {
         },
         (error) => {
           this.loading = false;
+          console.log(error);
           this.message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
         }
       )
@@ -100,6 +101,13 @@ export default {
 </script>
 
 <style scoped>
+
+:root {
+  --error-color: #f23648;
+  --error-bg-color: #fddfe2;
+  --success-color: #21a67a;
+  --success-bg-color: #e0eee4;
+}
 
 .wrapper {
   max-width: 25%;
@@ -143,6 +151,14 @@ export default {
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+}
+
+.error-feedback {
+  color: #f23648;
+}
+
+.message__respones {
+  color: orangered;
 }
 
 .other {
