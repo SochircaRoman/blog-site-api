@@ -1,0 +1,2 @@
+LoginItem:
+	-Input background blur validation (error -> pink, succes -> green);
