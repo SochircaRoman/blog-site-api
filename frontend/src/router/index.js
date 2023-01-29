@@ -1,5 +1,6 @@
 import { createWebHistory, createRouter } from 'vue-router';
 import LoginItem from '../components/LoginItem.vue'
+import RegisterItem from '../components/RegisterItem.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -12,6 +13,11 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: LoginItem
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: RegisterItem
     }
   ]
 })

@@ -2,15 +2,24 @@
   <div class="wrapper">
     <Form @submit="handleLogin" :validation-schema="schema">
 
-      <div class="img_container">
-				<img src="/avatar.png" alt="Avatar" class="profile_img">
+      <div class="registartion_info">
+				<h1>Registration</h1>
 			</div>
+			
+			<hr>
 
       <div class="input_container">
+
         <div class="input_group">
           <label for="username"><b>Username</b></label>
           <Field name="username" type="text" placeholder="Enter Username" class="input_field" :validateOnInput="true" />
           <ErrorMessage name="username" class="error-feedback" />
+        </div>
+
+        <div class="input_group">
+          <label for="email"><b>Email</b></label>
+          <Field name="email" type="email" placeholder="Enter Email" class="input_field" :validateOnInput="true" />
+          <ErrorMessage name="email" class="error-feedback" />
         </div>
 
         <div class="input_group">
@@ -19,12 +28,18 @@
           <ErrorMessage name="password" class="error-feedback" />
         </div>
 
+        <div class="input_group">
+          <label for="confirm_password"><b>Confirm Password</b></label>
+          <Field name="confirm_password" type="password" placeholder="Confirm Password" class="input_field" :validateOnInput="true" />
+          <ErrorMessage name="confirm_password" class="error-feedback" />
+        </div>
+
         <button class="submit_btn" :disabled="loading">
           <span
             v-show="loading"
             class=""
           ></span>
-          <span>Login</span>
+          <span>Submit</span>
         </button>
       </div>
 
@@ -34,14 +49,11 @@
         </div>
       </div>
 
-      <div class="other">
-				<div class="other_info">
-					<a href="#" class="other_info-link">Registration?</a>
-				</div>
-				<div class="other_info">
-					Forgot <a href="#" class="other_info-link">password?</a>
-				</div>
-	  	</div>
+      <div class="other_info">
+        <div class="other_info">
+          <p class="other_info-text">By creating an account you agree to our <a href="#" class="other_info-link">Terms & Privacy</a>.</p>
+        </div>
+      </div>
 
     </Form>
   </div>
@@ -52,7 +64,7 @@ import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 
 export default {
-  name: "Login",
+  name: "Register",
   components: {
     Form,
     Field,
@@ -66,8 +78,10 @@ export default {
   computed: {
     schema() {
       return yup.object({
-        username: yup.string().min(4).max(this.max).required("Username is required!").label('Username'),
-        password: yup.string().min(6).max(this.max).required("Password is required!").label('Password')
+        username: yup.string().min(4).max(this.max).required("Username is required!").label("Username"),
+        email: yup.string().email().required("Email is required!").label("Email"),
+        password: yup.string().min(6).max(this.max).required("Password is required!").label("Password"),
+        confirm_password: yup.string().required("Repeat Password!").oneOf([yup.ref("password")], "Passwords do not match")
       })
     },
     loggedIn() {
@@ -83,7 +97,7 @@ export default {
     handleLogin(user) {
       this.loading = true;
 
-      this.$store.dispatch("auth/login", user).then(
+      this.$store.dispatch("auth/register", user).then(
         () => {
           this.$router.push("/profile");
         },
@@ -107,14 +121,9 @@ export default {
   margin-top: 75px;
 }
 
-.img_container {
+.registartion_info {
   text-align: center;
-  margin: 24px 0 12px 0;
-}
-
-.profile_img {
-  width: 100px;
-  border-radius: 50%;
+  margin-top: 40px;
 }
 
 .input_container {
@@ -151,6 +160,7 @@ export default {
 
 .error-feedback {
   color: #f23648;
+  margin-top: -15px;
 }
 
 .response {
@@ -163,17 +173,8 @@ export default {
   text-align: center;
 }
 
-.other {
-  min-height: 30px;
-  padding-top: 10px;
-  display: flex;
-  justify-content: space-around;
-  background-color:#f1f1f1;
-}
-
 .other_info-link {
-  text-decoration: none;
-  font-size: 15px;
+  color: dodgerblue;
 }
 
 </style>
