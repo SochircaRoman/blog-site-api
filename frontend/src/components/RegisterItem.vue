@@ -174,7 +174,13 @@ export default {
 }
 
 .message__success {
+  margin: 0 auto;
+  margin-top: 20px;
   color: #04AA6D;
+  background-color: #d1dcd88a;
+  text-align: center;
+  padding: 30px;
+  font-size: 20px;
 }
 
 .message__alert {
