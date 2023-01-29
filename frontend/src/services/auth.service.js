@@ -28,14 +28,15 @@ class AuthService {
         password: user.password
       }
     });
+    console.log(candidate);
 
     // Add data to localStorage
-    if (candidate.data.accessToken) {
-      localStorage.setItem('user', JSON.stringify(candidate.data));
+    if (candidate.data.user.accessToken) {
+      localStorage.setItem('user', JSON.stringify(candidate.data.user.existingUser));
     }
 
     // If all ok return user data
-    return candidate.data;
+    return candidate.data.user.existingUser;
   }
 
   async logout() {
