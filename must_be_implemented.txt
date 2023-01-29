@@ -1,3 +1,6 @@
 LoginItem:
 	-Input background blur validation (error -> pink, succes -> green);
-	-Loading screen (when form is submiting);
+	-Loading screen (when form is submitting);
+
+RegisterItem:
+	-Succes submitting message;

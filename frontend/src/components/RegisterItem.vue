@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Form @submit="handleLogin" :validation-schema="schema">
+    <Form @submit="handleRegister" :validation-schema="schema">
 
       <div class="registartion_info">
 				<h1>Registration</h1>
@@ -8,7 +8,7 @@
 			
 			<hr>
 
-      <div class="input_container">
+      <div class="input_container" v-if="!successful">
 
         <div class="input_group">
           <label for="username"><b>Username</b></label>
@@ -43,13 +43,13 @@
         </button>
       </div>
 
-      <div class="response">
-        <div v-if="message" class="message__respones" role="alert">
+      <div class="message" v-if="message">
+        <div :class="successful ? 'message__success' : 'message__alert'">
           {{ message }}
         </div>
       </div>
 
-      <div class="other_info">
+      <div class="other_info" v-if="!successful">
         <div class="other_info">
           <p class="other_info-text">By creating an account you agree to our <a href="#" class="other_info-link">Terms & Privacy</a>.</p>
         </div>
@@ -71,6 +71,7 @@ export default {
     ErrorMessage,
   },
   data: () => ({
+    successful: false,
     loading: false,
     message: "",
     max: 30,
@@ -88,23 +89,28 @@ export default {
       return this.$store.state.auth.status.loggedIn;
     },
   },
-  created() {
+  mounted() {
     if (this.loggedIn) {
       this.$router.push("/profile");
     }
   },
   methods: {
-    handleLogin(user) {
+    handleRegister(user) {
+      this.message = "";
       this.loading = true;
+      this.successful = false;
 
       this.$store.dispatch("auth/register", user).then(
-        () => {
-          this.$router.push("/profile");
+        (data) => {
+          this.message = data.message;
+          this.successful = true;
+          this.loading = false;
         },
         (error) => {
-          this.loading = false;
           console.log(error);
           this.message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+          this.successful = false;
+          this.loading = false;
         }
       )
     }
@@ -118,12 +124,11 @@ export default {
 .wrapper {
   max-width: 25%;
   margin: 0 auto;
-  margin-top: 75px;
+  margin-top: 65px;
 }
 
 .registartion_info {
   text-align: center;
-  margin-top: 40px;
 }
 
 .input_container {
@@ -163,12 +168,16 @@ export default {
   margin-top: -15px;
 }
 
-.response {
+.message {
   margin: -10px;
   margin-bottom: 20px;
 }
 
-.message__respones {
+.message__success {
+  color: #04AA6D;
+}
+
+.message__alert {
   color: #f23648;
   text-align: center;
 }
