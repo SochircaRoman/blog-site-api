@@ -32,7 +32,8 @@ class AuthService {
 
     // Add data to localStorage
     if (candidate.data.user.accessToken) {
-      localStorage.setItem('user', JSON.stringify(candidate.data.user.existingUser));
+      localStorage.setItem("user", JSON.stringify(candidate.data.user.existingUser));
+      localStorage.setItem("accesToken", JSON.stringify(candidate.data.user.accessToken));
     }
 
     // If all ok return user data

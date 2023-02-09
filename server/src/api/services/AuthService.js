@@ -73,6 +73,8 @@ class AuthService {
           throw new Error("Access Token generate error")
       }
 
+      
+
       /*
       // Verify activation link
       const isActivated = existingUser.isActivated
