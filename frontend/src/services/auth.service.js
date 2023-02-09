@@ -28,7 +28,6 @@ class AuthService {
         password: user.password
       }
     });
-    console.log(candidate);
 
     // Add data to localStorage
     if (candidate.data.user.accessToken) {

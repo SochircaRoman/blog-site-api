@@ -6,7 +6,7 @@ class AuthController{
       try{
 
           // Get the username, password and email values
-          const { username, password, email } = request.body
+          const { username, password, email } = request.body.data
 
           // Check if username, password and email is present
           if (!username || !password || !email) {
@@ -37,7 +37,7 @@ class AuthController{
   async login(request, response){
     try{
         // Get the username and password
-        const { username, password } = request.body
+        const { username, password } = request.body.data
 
         // Check if username and password is present
         if (!username || !password) {

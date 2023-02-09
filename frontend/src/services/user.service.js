@@ -6,9 +6,10 @@ class UserService {
     const content = GenericService.request({
       url: 'users',
       method: 'get',
+      headers: authHeader(),
       data: {},
-      headers: authHeader()
     });
+    console.log(content);
     return content;
   }
 
@@ -16,8 +17,8 @@ class UserService {
     const content = GenericService.request({
       url: `user/${id}`,
       method: 'get',
+      headers: authHeader(),
       data: {},
-      headers: authHeader()
     });
     return content;
   }
@@ -26,8 +27,8 @@ class UserService {
     const content = GenericService.request({
       url: `user/${id}`,
       method: 'get',
-      data: {},
-      headers: authHeader()
+      headers: authHeader(),
+      data: {}
     });
     return content;
   }

@@ -36,7 +36,7 @@
 
       <div class="other">
 				<div class="other_info">
-					<a href="#" class="other_info-link">Registration?</a>
+					<a href="/register" class="other_info-link">Registration?</a>
 				</div>
 				<div class="other_info">
 					Forgot <a href="#" class="other_info-link">password?</a>

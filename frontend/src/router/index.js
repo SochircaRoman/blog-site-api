@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from 'vue-router';
-import LoginItem from '../components/LoginItem.vue'
-import RegisterItem from '../components/RegisterItem.vue'
+import LoginItem from '../components/LoginItem.vue';
+import RegisterItem from '../components/RegisterItem.vue';
+import HomeItem from '../components/HomeItem.vue';
 
 // lazy-loaded
 const Profile = () => import("../components/ProfileItem.vue")
@@ -11,6 +12,11 @@ const router = createRouter({
     {
       path: '/',
       redirect: '/home'
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: HomeItem
     },
     {
       path: '/login',
