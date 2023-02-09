@@ -3,9 +3,8 @@ const jwt = require("jsonwebtoken");
 class AuthMiddleware {
     async adminAuth(request, response, next){
         try {
-            const accesToken = request.headers["x-access-token"];
             // Get the jwt accesToken
-            //const accesToken = localStorage.getItem("accesToken");
+            const accesToken = request.headers["x-access-token"];
 
             // Verify if token is present
             if (!accesToken) {
@@ -34,7 +33,6 @@ class AuthMiddleware {
         try {
             // Get the jwt accesToken
             const accesToken = request.headers["x-access-token"];
-            //const accesToken = localStorage.getItem("accesToken");
 
             // Verify if token is present
             if (!accesToken) {
