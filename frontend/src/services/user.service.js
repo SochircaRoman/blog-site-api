@@ -9,7 +9,6 @@ class UserService {
       data: {},
       headers: authHeader()
     });
-    console.log(content);
     return content;
   }
 
@@ -20,7 +19,6 @@ class UserService {
       data: {},
       headers: authHeader()
     });
-    console.log(content);
     return content;
   }
 
@@ -31,7 +29,6 @@ class UserService {
       data: {},
       headers: authHeader()
     });
-    console.log(content);
     return content;
   }
 }
