@@ -41,7 +41,8 @@ class AuthService {
   }
 
   async logout() {
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
+    localStorage.removeItem("accesToken");
   }
   
 }
