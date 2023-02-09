@@ -14,6 +14,8 @@
         <div class="profile__information-field"><strong>Root:</strong>{{ currentUser.adminRoot }}</div>
       </div>
 
+      <button @click="handleLogout">Logout</button>
+
     </header>
   </div>
 </template>
@@ -27,6 +29,20 @@ export default {
       console.log(this.$store.state.auth.user);
       return this.$store.state.auth.user;
     },
+  },
+  methods: {
+    handleLogout() {
+      this.$store.dispatch("auth/logout").then(
+        () => {
+          this.$router.push("/login");
+        },
+        (error) => {
+          this.loading = false;
+          console.log(error);
+          this.message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        }
+      )
+    }
   },
   mounted () {
     if (!this.currentUser) {
