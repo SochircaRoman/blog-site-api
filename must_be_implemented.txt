@@ -6,3 +6,12 @@ RegisterItem:
 	-Succes submitting message;
 
 -Decomposition;
+
+NavBar:
+	-Dropdown profile;
+
+LoginItem:
+	-Succes message when user login;
+
+ProfileItem:
+	-Create profile;
