@@ -23,14 +23,14 @@
         <ul class="header__list">
           <li class="header__item">
             <router-link to="/register" class="header__link">
-              <img src="/png/register.png" alt="">
+              <img src="/png/register.png" alt="register">
               Register
             </router-link>
           </li>
           
           <li class="header__item">
             <router-link to="/login" class="header__link">
-              <img src="/png/login.png" alt="">
+              <img src="/png/login.png" alt="login">
               Login
             </router-link>
           </li>
@@ -39,11 +39,9 @@
 
       <div v-if="currentUser">
         <ul class="header__list">
+
           <li class="header__item">
-            <router-link to="/profile" class="header__link">
-              <img src="/png/user.png" alt="">
-              {{ currentUser.username }}
-            </router-link>
+            <dropdown-profile :username="currentUser.username" :items="items"></dropdown-profile>
           </li>
 
           <li class="header__item">
@@ -68,14 +66,30 @@
 
 <script>
 import { RouterLink } from 'vue-router';
+import DropdownProfile from './UI/DropdownProfile.vue';
 
 export default {
   components: {
     RouterLink,
+    DropdownProfile,
   },
   data() {
     return {
       headerItems: ["Home", "Blog"],
+      items: [
+        {
+          title: "Web",
+          link: "#"
+        },
+        {
+          title: "Design",
+          link: "#"
+        },
+        {
+          title: "Video",
+          link: "#"
+        }
+      ]
     }
   },
   created() {
@@ -131,7 +145,7 @@ export default {
   width: 100%;
   transition: .2s linear;
   padding-bottom: 10px;
-  z-index: 999;
+  z-index: 1;
 }
 
 .header_active {
@@ -175,7 +189,7 @@ export default {
   cursor: pointer;
 }
 
-header__link:hover, .header__link:focus, .header__link:active {
+.header__link:hover, .header__link:focus, .header__link:active {
   color: burlywood;
 }
 .router-link-active {
