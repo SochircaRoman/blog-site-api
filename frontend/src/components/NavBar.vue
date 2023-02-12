@@ -78,11 +78,11 @@ export default {
       headerItems: ["Home", "Blog"],
       items: [
         {
-          title: "Web",
-          link: "#"
+          title: "About",
+          link: "/profile"
         },
         {
-          title: "Design",
+          title: "Edit",
           link: "#"
         },
         {

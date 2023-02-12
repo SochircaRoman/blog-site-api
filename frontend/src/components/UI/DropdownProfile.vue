@@ -71,7 +71,7 @@ export default {
   box-shadow: 0px 10px 12px -3px rgb(0 0 0 / 30%);
   padding: 10px 25px;
   border-radius: 0px 0px 16px 16px;
-  margin-top: 8px;
+  margin-top: 7px;
 }
 
 .sub__menu-item {
