@@ -1,10 +1,10 @@
 <template>
   <div class="menu__item" @click="isOpen = !isOpen">
 
-    <router-link to="/profile" class="header__link-profile">
+    <div class="header__profile">
       <img src="/png/user.png" alt="profile">
       {{ username }}
-    </router-link>
+    </div>
 
     
       <div class="sub__menu" v-if="isOpen">
@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     hideDropdown(event) {
-      if (!event.target.matches('.header__link-profile')) {
+      if (!event.target.matches('.header__profile')) {
         this.isOpen = false;
       }
     },
@@ -43,16 +43,15 @@ export default {
 </script>
 
 <style>
-.header__link-profile {
+.header__profile {
   font-weight: 500;
   font-size: 20px;
   line-height: 29px;
   color: #000000;
-  text-decoration: none;
   cursor: pointer;
 }
 
-.header__link-profile:hover, .header__link-profile:focus, .header__link-profile:active {
+.header__profile:hover, .header__profile:focus, .header__profile:active {
   color: burlywood;
 }
 
@@ -67,7 +66,7 @@ export default {
 
 .sub__menu {
   position: absolute;
-  left: 5%;
+  left: 10%;
   box-shadow: 0px 10px 12px -3px rgb(0 0 0 / 30%);
   padding: 10px 25px;
   border-radius: 0px 0px 16px 16px;

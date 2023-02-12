@@ -57,8 +57,8 @@ export default {
 }
 
 .profile__picture-img {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
 }
 
