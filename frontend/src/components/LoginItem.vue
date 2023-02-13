@@ -114,10 +114,6 @@ export default {
   padding: 16px;
 }
 
-.input_group {
-  margin-bottom: 15px;
-}
-
 .submit_btn {
   background-color: #04AA6D;
   color: white;
@@ -131,19 +127,6 @@ export default {
 
 .submit_btn:hover {
   opacity: 0.8;
-}
-
-.input_field {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-.error-feedback {
-  color: #f23648;
 }
 
 .response {
