@@ -1,6 +1,11 @@
 <template>
   <div class="wrapper">
-    <Form @submit="handleLogin" :validation-schema="schema">
+
+    <div v-if="loginStatus" class="succes_popup">
+      <succes-popup text="Succes Login!"></succes-popup>
+    </div>
+
+    <Form v-else @submit="handleLogin" :validation-schema="schema">
 
       <div class="img_container">
 				<img src="/avatar.png" alt="Avatar" class="profile_img">
@@ -43,6 +48,7 @@
 <script>
 import { Form } from "vee-validate";
 import InputField from "../components/UI/InputField.vue";
+import SuccesPopup from "../components/UI/SuccesPopup.vue";
 import * as yup from "yup";
 
 export default {
@@ -50,9 +56,11 @@ export default {
   components: {
     Form,
     InputField,
+    SuccesPopup,
   },
   data: () => ({
     loading: false,
+    loginStatus: false, 
     message: "",
     max: 30,
   }),
@@ -78,7 +86,10 @@ export default {
 
       this.$store.dispatch("auth/login", user).then(
         () => {
-          this.$router.push("/profile");
+          this.loginStatus = true;
+          setTimeout(() => {
+            this.$router.push("/profile");
+          }, 4000)
         },
         (error) => {
           this.loading = false;
@@ -98,6 +109,11 @@ export default {
   max-width: 25%;
   margin: 0 auto;
   margin-top: 75px;
+}
+
+.succes_popup {
+  margin: 0 auto;
+  margin-top: 15%;
 }
 
 .img_container {
