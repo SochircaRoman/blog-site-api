@@ -7,6 +7,9 @@
 			</div>
 
       <div class="input_container">
+
+        <input-field type="text" name="username" placeholder="Enter Username"></input-field>
+
         <div class="input_group">
           <label for="username"><b>Username</b></label>
           <Field name="username" type="text" placeholder="Enter Username" class="input_field" :validateOnInput="true" />
@@ -49,6 +52,7 @@
 
 <script>
 import { Form, Field, ErrorMessage } from "vee-validate";
+import InputField from "../components/UI/InputField.vue";
 import * as yup from "yup";
 
 export default {
@@ -57,6 +61,7 @@ export default {
     Form,
     Field,
     ErrorMessage,
+    InputField,
   },
   data: () => ({
     loading: false,
