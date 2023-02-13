@@ -1,13 +1,15 @@
 <template>
   <div>
-    {{ content }}
+    <succes-popup></succes-popup>
   </div>
 </template>
 
 <script>
 import UserService from "../services/user.service";
+import SuccesPopup from "../components/UI/SuccesPopup.vue";
 
 export default {
+  components: { SuccesPopup },
   name: "Home",
   data() {
     return {
