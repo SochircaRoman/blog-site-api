@@ -9,18 +9,8 @@
       <div class="input_container">
 
         <input-field type="text" name="username" placeholder="Enter Username"></input-field>
-
-        <div class="input_group">
-          <label for="username"><b>Username</b></label>
-          <Field name="username" type="text" placeholder="Enter Username" class="input_field" :validateOnInput="true" />
-          <ErrorMessage name="username" class="error-feedback" />
-        </div>
-
-        <div class="input_group">
-          <label for="password"><b>Password</b></label>
-          <Field name="password" type="password" placeholder="Enter Password" class="input_field" :validateOnInput="true" />
-          <ErrorMessage name="password" class="error-feedback" />
-        </div>
+        
+        <input-field type="password" name="password" placeholder="Enter Password"></input-field>
 
         <button class="submit_btn" :disabled="loading">
           <span
