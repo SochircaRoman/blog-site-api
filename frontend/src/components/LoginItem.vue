@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { Form, Field, ErrorMessage } from "vee-validate";
+import { Form } from "vee-validate";
 import InputField from "../components/UI/InputField.vue";
 import * as yup from "yup";
 
@@ -49,8 +49,6 @@ export default {
   name: "Login",
   components: {
     Form,
-    Field,
-    ErrorMessage,
     InputField,
   },
   data: () => ({

@@ -10,29 +10,13 @@
 
       <div class="input_container" v-if="!successful">
 
-        <div class="input_group">
-          <label for="username"><b>Username</b></label>
-          <Field name="username" type="text" placeholder="Enter Username" class="input_field" :validateOnInput="true" />
-          <ErrorMessage name="username" class="error-feedback" />
-        </div>
+        <input-field type="text" name="username" placeholder="Enter Username"></input-field>
 
-        <div class="input_group">
-          <label for="email"><b>Email</b></label>
-          <Field name="email" type="email" placeholder="Enter Email" class="input_field" :validateOnInput="true" />
-          <ErrorMessage name="email" class="error-feedback" />
-        </div>
+        <input-field type="email" name="email" placeholder="Enter Email"></input-field>
 
-        <div class="input_group">
-          <label for="password"><b>Password</b></label>
-          <Field name="password" type="password" placeholder="Enter Password" class="input_field" :validateOnInput="true" />
-          <ErrorMessage name="password" class="error-feedback" />
-        </div>
+        <input-field type="password" name="password" placeholder="Enter Password"></input-field>
 
-        <div class="input_group">
-          <label for="confirm_password"><b>Confirm Password</b></label>
-          <Field name="confirm_password" type="password" placeholder="Confirm Password" class="input_field" :validateOnInput="true" />
-          <ErrorMessage name="confirm_password" class="error-feedback" />
-        </div>
+        <input-field type="password" name="confirm" placeholder="Confirm Password"></input-field>
 
         <button class="submit_btn" :disabled="loading">
           <span
@@ -60,15 +44,15 @@
 </template>
 
 <script>
-import { Form, Field, ErrorMessage } from "vee-validate";
+import { Form } from "vee-validate";
+import InputField from "../components/UI/InputField.vue";
 import * as yup from "yup";
 
 export default {
   name: "Register",
   components: {
     Form,
-    Field,
-    ErrorMessage,
+    InputField,
   },
   data: () => ({
     successful: false,
@@ -82,7 +66,7 @@ export default {
         username: yup.string().min(4).max(this.max).required("Username is required!").label("Username"),
         email: yup.string().email().required("Email is required!").label("Email"),
         password: yup.string().min(6).max(this.max).required("Password is required!").label("Password"),
-        confirm_password: yup.string().required("Repeat Password!").oneOf([yup.ref("password")], "Passwords do not match")
+        confirm: yup.string().required("Repeat Password!").oneOf([yup.ref("password")], "Passwords do not match")
       })
     },
     loggedIn() {

@@ -7,12 +7,11 @@
 </template>
 
 <script>
-import { Form, Field, ErrorMessage } from "vee-validate";
+import { Field, ErrorMessage } from "vee-validate";
 
 export default {
   props: ["type", "name", "placeholder"],
   components: {
-    Form,
     Field,
     ErrorMessage,
   },
