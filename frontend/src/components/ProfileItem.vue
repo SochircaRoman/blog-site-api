@@ -9,9 +9,10 @@
       <hr>
 
       <div class="profile__information">
-        <div class="profile__information-field" v-for="field in fieldNames" :key="field">
-          <div class="field__name">{{ field }}:</div>
-          <div class="field__data">{{ currentUser[field] }}</div>
+        <div class="profile__information-field" v-for="field in fieldNames" :key="field.id">
+          <div class="field__name">{{ field.name }}:</div>
+          <div v-if="field.id == 6" class="field__data">{{ currentUser[field.dbName].split("T")[0] }}</div>
+          <div v-else class="field__data">{{ currentUser[field.dbName] }}</div>
         </div>
       </div>
 
@@ -23,11 +24,43 @@
 export default {
   data() {
     return {
-      fieldNames: ["username", "_id", "email", "adminRoot"],
+      fieldNames: [
+      {
+        id: 1,
+        name: "Username",
+        dbName: "username"
+      },
+      {
+        id: 2,
+        name: "Id",
+        dbName: "_id"
+      },
+      {
+        id: 3,
+        name: "Email",
+        dbName: "email"
+      },
+      {
+        id: 4,
+        name: "Admin root",
+        dbName: "adminRoot"
+      },
+      {
+        id: 5,
+        name: "Link activation",
+        dbName: "isActivated"
+      },
+      {
+        id: 6,
+        name: "Created date",
+        dbName: "createdAt"
+      },
+    ],
     }
   },
   computed: {
     currentUser() {
+      console.log(this.$store.state.auth.user["createdAt"].split("T"))
       return this.$store.state.auth.user;
     },
   },

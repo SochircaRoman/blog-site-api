@@ -89,7 +89,7 @@ export default {
           this.loginStatus = true;
           setTimeout(() => {
             this.$router.push("/profile");
-          }, 4000)
+          }, 3000)
         },
         (error) => {
           this.loading = false;

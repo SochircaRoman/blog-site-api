@@ -1,6 +1,5 @@
 <template>
   <div>
-    <succes-popup></succes-popup>
   </div>
 </template>
 
