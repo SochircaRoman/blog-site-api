@@ -5,6 +5,7 @@ import HomeItem from '../components/HomeItem.vue';
 
 // lazy-loaded
 const Profile = () => import("../components/ProfileItem.vue")
+const Settings = () => import("../components/SettingsItem.vue")
 const UserBoard = () => import("../components/UserBoard.vue")
 const AdminBoard = () => import("../components/AdminBoard.vue")
 
@@ -35,6 +36,12 @@ const router = createRouter({
       name: 'profile',
       // lazy-loaded
       component: Profile,
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      // lazy-loaded
+      component: Settings,
     },
     {
       path: '/admin',

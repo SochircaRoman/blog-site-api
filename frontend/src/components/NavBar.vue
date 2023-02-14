@@ -83,7 +83,7 @@ export default {
         },
         {
           title: "Settings",
-          link: "#"
+          link: "/settings"
         },
         {
           title: "Video",
@@ -145,7 +145,7 @@ export default {
   width: 100%;
   transition: .2s linear;
   padding-bottom: 10px;
-  z-index: 1;
+  z-index: 999;
 }
 
 .header_active {

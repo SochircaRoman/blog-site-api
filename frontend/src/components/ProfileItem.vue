@@ -42,17 +42,17 @@ export default {
       },
       {
         id: 4,
-        name: "Admin root",
+        name: "Admin Root",
         dbName: "adminRoot"
       },
       {
         id: 5,
-        name: "Link activation",
+        name: "Link Activation",
         dbName: "isActivated"
       },
       {
         id: 6,
-        name: "Created date",
+        name: "Member Since",
         dbName: "createdAt"
       },
     ],
@@ -60,7 +60,6 @@ export default {
   },
   computed: {
     currentUser() {
-      console.log(this.$store.state.auth.user["createdAt"].split("T"))
       return this.$store.state.auth.user;
     },
   },
