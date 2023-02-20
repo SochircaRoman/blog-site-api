@@ -3,7 +3,7 @@
     <div class="profile">
       
       <div class="profile__picture">
-		    <img src="/roman.jpg" alt="Profile picture" class="profile__picture-img">
+		    <img src="/avatar.png" alt="Profile picture" class="profile__picture-img">
 		  </div>
 
       <hr>

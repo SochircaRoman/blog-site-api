@@ -4,6 +4,8 @@
     <div class="header__profile">
       <img src="/png/user.png" alt="profile">
       {{ username }}
+      <img v-if="!isOpen" class="menu__caret" src="/svg/caret_down.svg" alt="down">
+      <img v-if="isOpen" class="menu__caret" src="/svg/caret_up.svg" alt="up">
     </div>
 
     
@@ -49,6 +51,11 @@ export default {
   line-height: 29px;
   color: #000000;
   cursor: pointer;
+}
+.menu__caret {
+  width: 30px;
+  height: 30px;
+  margin-left: -5px;
 }
 
 .header__profile:hover, .header__profile:focus, .header__profile:active {
