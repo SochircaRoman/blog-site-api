@@ -7,7 +7,7 @@
 			</div>
 			
 			<hr>
-
+      
       <div class="input_container" v-if="!successful">
 
         <input-field type="text" name="username" placeholder="Enter Username"></input-field>
